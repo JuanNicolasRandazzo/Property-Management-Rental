@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ASPN.Property_Rental_Management_Final_Project.Models.Message>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Messages</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAndTime)
+        </th>
+        <th>
+            Property Manager Username
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User1.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User1.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Answer", "Create", new { id=item.MessageID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MessageID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MessageID })
+        </td>
+    </tr>
+}
+
+</table>

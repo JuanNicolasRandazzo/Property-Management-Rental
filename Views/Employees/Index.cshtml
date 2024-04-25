@@ -1,0 +1,168 @@
+﻿@model IEnumerable<ASPN.Property_Rental_Management_Final_Project.Models.Employee>
+
+
+@{
+    ViewBag.Title = "Welcome, " + Session["Username"]?.ToString();
+}
+
+<h2>Welcome, @Session["Username"]</h2>
+
+<p>
+    @if (Session["Role"] != null)
+    {
+        var role = Session["Role"].ToString();
+
+        if (role == "Administrator")
+        {
+            @Html.ActionLink("Manage Property Managers", "ManagePropertyManager", "Employees", null, new { @class = "button-custom" })
+            <span class="link-spacing"></span>
+            @Html.ActionLink("Manage Tenants", "ManageTenants", "Employees", null, new { @class = "button-custom" })
+            <span class="link-spacing"></span>
+            @Html.ActionLink("Manage Properties", "Index", "Buildings", null, new { @class = "button-custom" })
+            <span class="link-spacing"></span>
+            @Html.ActionLink("Manage Apartments", "Index", "Apartments", null, new { @class = "button-custom" })
+        }
+        else if (role == "Property Manager")
+        {
+            @Html.ActionLink("Manage Properties", "Index", "Buildings", null, new { @class = "link-spacing" })
+            <span class="link-spacing"></span>
+            @Html.ActionLink("Manage Apartments", "Index", "Apartments", null, new { @class = "link-spacing" })
+            <span class="link-spacing"></span>
+            @Html.ActionLink("Schedule Appointments", "Index", "Appointments", null, new { @class = "link-spacing" })
+            <span class="link-spacing"></span>
+            @Html.ActionLink("View Messages", "Index", "Messages", null, new { @class = "link-spacing" })
+        }
+    }
+</p>
+
+<h3>Property Managers</h3>
+<div>
+    <input type="text" id="pmSearch" placeholder="Search by name or username">
+    <button onclick="searchPropertyManagers()">Search</button>
+</div>
+<table id="pmTable" class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+    
+    @foreach (var item in Model.Where(e => e.User.Role == "Property Manager"))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
+            </td>
+            <td>
+                @if (Session["Role"] != null && Session["Role"].ToString() == "Administrator")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID })
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<h3>Tenants</h3>
+<div>
+    <input type="text" id="tenantSearch" placeholder="Search by name or username">
+    <button onclick="searchTenants()">Search</button>
+</div>
+<table id="tenantTable" class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+    
+    @foreach (var item in Model.Where(t => t.User.Role == "Tenant"))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
+            </td>
+            <td>
+                @if (Session["Role"] != null && Session["Role"].ToString() == "Administrator")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID })
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+    function searchPropertyManagers() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("pmSearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("pmTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0]; 
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function searchTenants() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("tenantSearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tenantTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

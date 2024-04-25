@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    
+</head>
+<style>
+
+    a{
+        
+        margin: 10px;
+        padding:10px;
+    }
+</style>
+<body>
+    <main>
+        <section class="row" aria-labelledby="aspnetTitle">
+            <h1 id="title">Property Management Rental</h1>
+            <p class="lead">
+                Property Rental Management Web Site allows any potential
+                tenant to search an apartment that is suitable for his/her needs. The
+                Web site also helps the property owner and the property manager to
+                facilitate the management tasks of property rental.
+            </p>
+        </section>
+
+        <div class="row">
+            <section class="col-md-12">
+                <a href="@Url.Action("LogIn", "LogIn")" class="button-custom">LogIn</a><br />
+                <a href="@Url.Action("SignUp", "Tenants")" class="button-custom">SignUp</a><br />
+            </section>
+        </div>
+    </main>
+</body>
+</html>

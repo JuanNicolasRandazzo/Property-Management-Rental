@@ -1,0 +1,42 @@
+﻿@model ASPN.Property_Rental_Management_Final_Project.Models.Apartment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Apartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApartmentNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Building.BuildingName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Building.BuildingName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.StatusName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ApartmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ASPN.Property_Rental_Management_Final_Project.Models.Employee>
+
+@{
+    ViewBag.Title = "Welcome, " + Session["Username"]?.ToString();
+}
+
+<h2>Welcome, @Session["Username"]</h2>
+<div class="button-container">
+
+    @Html.ActionLink("Manage Properties", "Index", "Buildings", null, new { @class = "button-custom" })
+    <span class="link-spacing"></span>
+    @Html.ActionLink("Manage Apartments", "Index", "Apartments", null, new { @class = "button-custom" })
+    <span class="link-spacing"></span>
+    @Html.ActionLink("Schedule Appointments", "Index", "Appointments", null, new { @class = "button-custom" })
+    <span class="link-spacing"></span>
+    @Html.ActionLink("View Messages", "Index", "Messages", null, new { @class = "button-custom" })
+    <span class="link-spacing"></span>
+    @Html.ActionLink("Manage Rentals ", "Index", "Rentals", null, new { @class = "button-custom" })
+
+</div>
+

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ASPN.Property_Rental_Management_Final_Project.Models.Apartment>
+
+@{
+    ViewBag.Title = "List Apartments";
+}
+
+<h2>Welcome, @Session["Username"]</h2>
+
+@Html.ActionLink("View Messages", "Index", "Messages", @Session["Username"], new { @class = "button-custom" })
+
+
+<p>
+    <div>
+        Search by:
+        <select id="searchBy">
+            <option value="all">All Columns</option>
+            <option value="BuildingName">Building Name</option>
+            <option value="ApartmentNumber">Apartment Number</option>
+            <option value="StatusName">Status</option>
+        </select>
+        <input type="text" id="pmSearch" placeholder="Enter search term">
+        <button onclick="searchApartments()">Search</button>
+    </div>
+</p>
+<table id="pmTable" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.BuildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.StatusName)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img src="@Url.Content("~/Images/" + item.Photo)" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ApartmentID }, new { @class = "button-custom" }) |
+                @Html.ActionLink("Make Appoinment", "Create", "Appoinments", new { id = item.ApartmentID }, new { @class = "button-custom" }) |
+                @Html.ActionLink("Message to the Property Manager", "Create", "Messages", new { id = item.ApartmentID }, new { @class = "button-custom" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    function searchApartments() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("pmSearch");
+        filter = input.value.toUpperCase();
+        var searchBy = document.getElementById("searchBy").value;
+        table = document.getElementById("pmTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+
+            var shouldHide = true;
+            for (j = 0; j < td.length - 1; j++) {
+                if (td[j] && (searchBy === "all" || td[j].textContent.toUpperCase().indexOf(filter) > -1)) {
+                    shouldHide = false;
+                    break;
+                }
+            }
+
+            tr[i].style.display = shouldHide ? "none" : "";
+        }
+    }
+</script>

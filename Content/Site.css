@@ -1,0 +1,204 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Custom link spacing */
+.link-spacing {
+    margin-right: 30px; /* Ajusta el valor de margin-right según el espacio que necesites */
+}
+/*Custom styles for Home Index View*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h1, h2 {
+    color: purple;
+    font-family:'Baskerville Old Face';
+}
+
+p {
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-dark {
+    background-color: transparent;
+    border-color: #343a40;
+    color: #343a40;
+}
+
+    .btn-outline-dark:hover {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-md-4 {
+    flex: 0 0 calc(33.333% - 20px);
+    margin-bottom: 20px;
+}
+/* Custom styles for the PropertyManager View */
+.button-custom {
+    background-color: purple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+
+    .button-custom:hover {
+        background-color: white;
+        color: purple;
+    }
+
+
+.link-spacing {
+    margin-right: 20px;
+}
+
+
+.button-container {
+    margin-top: 20px;
+}
+/* Custom styles for the Apartments Index view */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #cb6df0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #6c2a8a;
+    color: #ffffff;
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 5px;
+}
+
+a {
+    color: #6c2a8a;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Custom styles for the Messages Create View */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+h2 {
+    color: #6A0DAD; /* Morado */
+}
+
+.form-horizontal {
+    background-color: #cb6df0; /* Morado */
+    color: #ffffff; /* Blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.control-label {
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: #ffffff; /* Blanco */
+    color: #333333;
+    border: 1px solid #6A0DAD; /* Morado */
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+}
+
+.btn-default {
+    background-color: #6A0DAD; /* Morado */
+    color: #ffffff; /* Blanco */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.text-danger {
+    color: #E50000; /* Rojo */
+}
+
+.message-form {
+    height: 100px; /* Altura del área de texto */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
+

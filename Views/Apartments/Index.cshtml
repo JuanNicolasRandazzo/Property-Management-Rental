@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ASPN.Property_Rental_Management_Final_Project.Models.Apartment>
+
+@{
+    ViewBag.Title = "Apartments Manager";
+}
+
+<h2>Apartments Manager</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusName)
+        </th>
+        <th>
+            Photo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.BuildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.StatusName)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img src="@Url.Content("~/Images/" + item.Photo)" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ApartmentID }, new { @class = "button-custom" })
+                @Html.ActionLink("Details", "Details", new { id = item.ApartmentID }, new { @class = "button-custom" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ApartmentID }, new { @class = "button-custom" })
+            </td>
+        </tr>
+    }
+</table>
